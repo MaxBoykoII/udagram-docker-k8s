@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  udagram-api:
+    build:
+      context: ./udagram-api
+      dockerfile: Dockerfile
+    volumes:
+      - './udagram-api:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - 8080:8100
+    environment:
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - JWT_SECRET=${JWT_SECRET}
+      - URL=8100
